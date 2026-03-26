@@ -1,0 +1,15 @@
+[project]
+name = "fastapi-sandbox"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlmodel",
+    "psycopg2-binary",
+    "alembic",
+    "python-dotenv",
+]
+
+[tool.fastapi]
+entrypoint = "backend.main:app"
