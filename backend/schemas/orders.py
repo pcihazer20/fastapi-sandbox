@@ -1,6 +1,5 @@
 from decimal import Decimal
 from typing import List, Optional
-from sqlmodel import SQLModel
 from pydantic import BaseModel
 
 # -------- Requests --------
