@@ -47,14 +47,3 @@ class OrderItem(SQLModel, table=True):
         nullable=False
     )
 
-
-class OrderItemCreate(SQLModel):
-    description: Optional[str] = None
-    amount: Decimal
-
-
-class OrderCreate(SQLModel):
-    description: Optional[str] = None
-    total: Decimal
-    items: List[OrderItemCreate]
-

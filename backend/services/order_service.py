@@ -1,7 +1,8 @@
 from fastapi import Depends, HTTPException
 
-from backend.models.order_models import Order, OrderCreate, OrderItem
-from backend.repositories.order_repo import OrderRepository
+from backend.models.order_models import Order, OrderItem
+from backend.schemas.orders import OrderCreate
+from backend.repo.order_repo import OrderRepository
 
 
 class OrderService:
@@ -24,10 +25,13 @@ class OrderService:
                 for item in order_in.items
             ]
         )
-        return self.repo.create_order(self.repo.session, order)
+        return self.repo.create_order(order)
 
-    def get_by_id(self, order_id: int) -> Order:
+    def find_by_id(self, order_id: int) -> Order:
         order = self.repo.find_by_id(order_id)
         if not order:
             raise HTTPException(status_code=404, detail="Order not found")
         return order
+
+    def delete_by_id(self, order_id: int ):
+        self.repo.delete_by_id(order_id)

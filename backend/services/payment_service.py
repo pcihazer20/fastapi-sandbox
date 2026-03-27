@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException
 
 from backend.models.payment_models import Payment, PaymentCreate, PaymentUpdate
-from backend.repositories.payment_repo import PaymentRepository
+from backend.repo.payment_repo import PaymentRepository
 
 
 class PaymentService:

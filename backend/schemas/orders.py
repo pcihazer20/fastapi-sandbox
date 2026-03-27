@@ -1,28 +1,30 @@
+from decimal import Decimal
 from typing import List, Optional
 from sqlmodel import SQLModel
+from pydantic import BaseModel
 
 # -------- Requests --------
-class OrderItemCreate(SQLModel):
+class OrderItemCreate(BaseModel):
     description: Optional[str] = None
-    amount: float
+    amount: Decimal
 
 
-class OrderCreate(SQLModel):
+class OrderCreate(BaseModel):
     description: Optional[str] = None
-    total: float
+    total: Decimal
     items: List[OrderItemCreate]
 
 
 # -------- Responses --------
-class OrderItemRead(SQLModel):
+class OrderItemRead(BaseModel):
     id: int
     description: Optional[str]
-    amount: float
+    amount: Decimal
 
 
-class OrderRead(SQLModel):
+class OrderRead(BaseModel):
     id: int
     number: str
     description: Optional[str]
-    total: float
+    total: Decimal
     items: List[OrderItemRead]
